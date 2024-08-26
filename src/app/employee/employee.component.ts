@@ -24,7 +24,7 @@ import {HttpErrorResponse} from "@angular/common/http";
     MatDivider,
     MatButton,
     MatAnchor,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css'
@@ -40,6 +40,7 @@ export class EmployeeComponent implements OnInit {
   employeeSkills: ""
 }
 
+skills:string[] = [];
 
 
   constructor(private employeeService: EmployeeService) {
@@ -47,6 +48,25 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+
+
+  onSkillsChange(event:any):void{
+    console.log(event);
+    if(event.checked){
+      this.skills.push(event.source.value);
+    }else {
+      this.skills.forEach((item,index)=>{
+        if (item==event.source.value){
+          this.skills.splice(index,1);
+        }
+      });
+    }
+    this.employee.employeeSkills=this.skills.toString();
+  }
+
+
 
 
   saveEmployee(employeeForm:NgForm):void{

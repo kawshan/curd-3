@@ -9,7 +9,7 @@ import {HomeComponent} from "./home/home.component";
   imports: [
     RouterOutlet,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
